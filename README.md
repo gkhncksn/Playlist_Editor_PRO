@@ -19,14 +19,14 @@
 ## 📸 Ekran Görüntüleri
 
 ### URL Checker - Canlı Test ve Oynatma
-![URL Checker]
 <img width="1252" height="936" alt="url checker" src="https://github.com/user-attachments/assets/923f0115-292d-488f-b512-704955b46dc0" />
 
 ### Playlist Editor - Gelişmiş Düzenleme
-![Playlist Editor](https://via.placeholder.com/800x500/4CAF50/FFFFFF?text=Playlist+Editor+%E2%80%A2+Geli%C5%9Fmi%C5%9F+D%C3%BCzenleme)
+<img width="1252" height="931" alt="playlist editor" src="https://github.com/user-attachments/assets/9e34db3c-7394-4b7e-a862-5fb25ac705ca" />
 
 ### Playlist Generator - Çoklu Format Desteği
-![Playlist Generator](https://via.placeholder.com/800x500/FF9800/FFFFFF?text=Playlist+Generator+%E2%80%A2+%C3%87oklu+Format)
+<img width="1247" height="933" alt="playlist generator" src="https://github.com/user-attachments/assets/dafe7459-29f1-4c6b-9674-4cd4ff5989ed" />
+
 
 ## 🚀 Hızlı Başlangıç
 
