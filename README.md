@@ -387,8 +387,8 @@ copies or substantial portions of the Software.
 
 ## 📞 İletişim
 
-- **GitHub**: [Issues](https://github.com/username/playlist-editor-pro/issues)
-- **Email**: developer@example.com
+- **GitHub**: [Issues]([https://github.com/gkhncksn/Playlist_Editor_PRO/issues])
+- **Email**: g.coksen@gmail.com
 - **Website**: https://playlist-editor-pro.com
 
 ---
