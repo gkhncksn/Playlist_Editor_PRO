@@ -4,7 +4,7 @@
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Platform](https://img.shields.io/badge/Platform-Windows-lightgrey.svg)](https://github.com)
 
-**Kapsamlı radyo istasyonu playlist yönetim aracı** - JSON/Excel/CSV dosyalarından M3U8 playlist oluşturma, gelişmiş URL kontrolü, playlist düzenleme ve VLC entegrasyonu ile canlı oynatma özellikleri sunar.
+**Kapsamlı radyo istasyonu playlist yönetim aracı** - JSON/Excel/CSV/XML dosyalarından playlist oluşturma (m3u, m3u8, pls, dpl), gelişmiş Stream URL kontrolü, playlist düzenleme ve VLC entegrasyonu ile canlı oynatma/istasyon test özellikleri sunar.
 
 ## 🌟 Öne Çıkan Özellikler
 
@@ -19,7 +19,8 @@
 ## 📸 Ekran Görüntüleri
 
 ### URL Checker - Canlı Test ve Oynatma
-![URL Checker](https://via.placeholder.com/800x500/2196F3/FFFFFF?text=URL+Checker+%E2%80%A2+Canl%C4%B1+Test+ve+Oynatma)
+![URL Checker]
+<img width="1252" height="936" alt="url checker" src="https://github.com/user-attachments/assets/923f0115-292d-488f-b512-704955b46dc0" />
 
 ### Playlist Editor - Gelişmiş Düzenleme
 ![Playlist Editor](https://via.placeholder.com/800x500/4CAF50/FFFFFF?text=Playlist+Editor+%E2%80%A2+Geli%C5%9Fmi%C5%9F+D%C3%BCzenleme)
