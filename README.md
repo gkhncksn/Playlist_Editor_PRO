@@ -1,298 +1,396 @@
-# Radyo İstasyonu M3U8 Playlist Oluşturucu & URL Checker
+# 🎵 Playlist Editor PRO
 
-Kapsamlı radyo istasyonu playlist yönetim aracı. JSON dosyalarından M3U8 playlist oluşturma, URL kontrolü ve gelişmiş playlist düzenleme özellikleri sunar.
+[![Python](https://img.shields.io/badge/Python-3.7+-blue.svg)](https://python.org)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![Platform](https://img.shields.io/badge/Platform-Windows-lightgrey.svg)](https://github.com)
 
-## 🆕 Yeni Sürüm Özellikleri (v2.1)
+**Kapsamlı radyo istasyonu playlist yönetim aracı** - JSON/Excel/CSV dosyalarından M3U8 playlist oluşturma, gelişmiş URL kontrolü, playlist düzenleme ve VLC entegrasyonu ile canlı oynatma özellikleri sunar.
 
-### ✨ Modüler Yapı
-- **Ayrı Modüller**: Her özellik kendi modülünde (playlist_generator.py, url_checker.py, playlist_editor.py, vlc_player.py)
-- **Temiz Kod**: Ana program sadece 300 satır (önceden 2000+ satır)
-- **Kolay Bakım**: Her modül bağımsız olarak geliştirilebilir
+## 🌟 Öne Çıkan Özellikler
 
-### 🗄️ SQLite Veritabanı
-- **Ayar Yönetimi**: .ini yerine SQLite veritabanı (veriler.db)
-- **Otomatik Geçiş**: Mevcut .ini ayarları otomatik olarak SQLite'a aktarılır
-- **Gelişmiş Saklama**: Timestamp'li ayar geçmişi
-- **Performans**: Daha hızlı ayar okuma/yazma
+- 🎯 **4 Modül Bir Arada**: URL Checker, Playlist Editor, Playlist Generator, Playlist Merger
+- 🎵 **Canlı Oynatma**: Gömülü VLC player ile anında test ve dinleme
+- 📊 **Çoklu Format Desteği**: JSON, Excel, CSV, SQLite, XML, M3U8, PLS, DPL
+- 🔍 **Akıllı URL Kontrolü**: HTTP + VLC hibrit test sistemi
+- 🎨 **Modern Arayüz**: Tab-based tasarım, dinamik pencere başlığı, şarkı metaverisi
+- 🗄️ **SQLite Veritabanı**: Hızlı ayar yönetimi ve otomatik INI geçişi
+- 🌍 **75+ Ülke Desteği**: Otomatik ülke tanıma ve playlist oluşturma
 
-### 🎵 Gelişmiş VLC Oynatıcı
-- **Ses Kontrolü**: 0-100 arası ses seviyesi slider'ı (varsayılan: 80)
-- **Tam Ekran**: Oynatma alanına çift tıklayarak tam ekran modu
-- **Otomatik VLC Kurulumu**: Program başlangıcında otomatik VLC yolu bulma
-- **Tek Seferlik Ayar**: VLC yolu bir kez ayarlanır, bir daha sorulmaz
+## 📸 Ekran Görüntüleri
 
-### 🎨 Gelişmiş Arayüz
-- **Belirgin Tablo Çizgileri**: Tüm tablolarda zebra stripes ve belirgin kenarlıklar
-- **Kompakt Paneller**: Playlist Editor'da küçük kontrol panelleri, büyük tablo
-- **Progress Bar**: Alt kısımda görsel ilerleme çubuğu
-- **Otomatik Kurulum**: VLC yolu otomatik bulunur ve ayarlanır
+### URL Checker - Canlı Test ve Oynatma
+![URL Checker](https://via.placeholder.com/800x500/2196F3/FFFFFF?text=URL+Checker+%E2%80%A2+Canl%C4%B1+Test+ve+Oynatma)
 
-## 🎯 Özellikler
+### Playlist Editor - Gelişmiş Düzenleme
+![Playlist Editor](https://via.placeholder.com/800x500/4CAF50/FFFFFF?text=Playlist+Editor+%E2%80%A2+Geli%C5%9Fmi%C5%9F+D%C3%BCzenleme)
 
-### 📻 Playlist Generator
-- **Çoklu Format Desteği**: JSON, Excel (xlsx/xls), CSV, SQLite, XML
-- 75+ ülke desteği
-- Otomatik ülke tanıma
-- Otomatik dosya yolu oluşturma
-- **Akıllı Sütun Tanıma**: Farklı dosya formatlarında otomatik sütun eşleştirme
+### Playlist Generator - Çoklu Format Desteği
+![Playlist Generator](https://via.placeholder.com/800x500/FF9800/FFFFFF?text=Playlist+Generator+%E2%80%A2+%C3%87oklu+Format)
 
-### 🔍 URL Checker
-- **Hibrit Test Sistemi**: HTTP (hızlı) + VLC (detaylı) kombinasyonu (HTTP başarılıysa VLC test atlanır, başarısızsa VLC ile ikinci test)
-- **İptal Edilebilir**: Kontrol sırasında "İptal Et" butonu ile durdurulabilir
-- **Gömülü VLC Oynatıcı**: Hızlı test için program içinde oynatıcı (tam boyut)
-- **Kompakt Kontrol Paneli**: İstatistikler ve kontroller tek panelde
-- **Çift Oynatma Modu**: Gömülü ve pencere modu arası geçiş
-- **Gelişmiş Tablo**: TVG Name, Logo URL, Grup bilgileri ile
-- **Sıralanabilir Sütunlar**: Başlıklara tıklayarak alfabetik sıralama
-- **Sağ Tık Menüsü**: Gömülü/Pencere modu seçimi
-- **Otomatik Seçim**: Çalışmayan linkler kontrol sonrası otomatik seçilir
-- **Metadata Korunması**: TVG bilgileri kaybolmaz
-
-### ✏️ Playlist Editor
-- **Kompakt Kontrol Paneli**: 2 sütunlu buton düzeni ile daha az yer kaplar
-- **Gelişmiş M3U8 Düzenleme**: tvg-name, tvg-logo, group-title desteği
-- **Sıralanabilir Sütunlar**: Başlıklara tıklayarak alfabetik sıralama
-- **Hızlı Düzenleme**: Kısa buton isimleri ile daha pratik kullanım
-- **Kanal Yönetimi**: Ekleme/silme/düzenleme/sıralama
-
-## 🚀 Kurulum
+## 🚀 Hızlı Başlangıç
 
 ### Gereksinimler
-- Python 3.7+
-- VLC Media Player (opsiyonel, radyo test için)
+- **Python 3.7+**
+- **VLC Media Player** (opsiyonel, oynatma için)
 
-### Kütüphane Kurulumu
+### Kurulum
+
+#### Otomatik Kurulum (Windows)
 ```bash
-# Otomatik kurulum (Windows)
+# 1. Projeyi indirin
+git clone https://github.com/username/playlist-editor-pro.git
+cd playlist-editor-pro
+
+# 2. Bağımlılıkları yükleyin
 install_requirements.bat
 
-# Manuel kurulum
-pip install python-vlc pandas openpyxl xlrd lxml
+# 3. Programı başlatın
+python main.py
 ```
 
-## 🎮 Kullanım
+#### Manuel Kurulum
+```bash
+# Bağımlılıkları yükleyin
+pip install python-vlc pandas openpyxl xlrd lxml
 
-### 1. Playlist Generator
-1. **Veri Dosyası Seç**: JSON, Excel, CSV, SQLite veya XML dosyasını seç
-2. **Ülke Seçimi**: Otomatik algılanır veya manuel seç
-3. **M3U8 Oluştur**: Aynı klasöre otomatik kaydedilir
-4. **Format Desteği**: 
-   - **Excel**: Sheet isimleri ülke koduna göre aranır
-   - **CSV**: Farklı encoding'ler otomatik denenir
-   - **SQLite**: Tablo isimleri ülke koduna göre aranır
-   - **XML**: Farklı XML yapıları desteklenir
+# Programı başlatın
+python main.py
+```
 
-### 2. URL Checker
-1. **M3U8 Yükle**: Sol panelde dosya seç, otomatik yüklenir (TVG bilgileri ile)
-2. **Gömülü Oynatıcı**: Sağ panelde hızlı test oynatıcısı
-3. **Çift Tıklama**: Gömülü oynatıcıda çal (varsayılan)
-4. **Sağ Tık Menüsü**: Gömülü/Pencere modu seçimi
-5. **Pencere Geçişi**: 🔊 butonu ile pencere moduna geç
-6. **VLC Sessiz Test**: Gerçek ses çıkışı ile URL kontrolü (önerilen)
-7. **HTTP Yedek Test**: VLC yoksa HTTP status kontrolü
-8. **Sıralama**: Sütun başlıklarına tıklayarak alfabetik sıralama
-9. **Otomatik Seçim**: Çalışmayan linkler otomatik seçilir
-10. **Akıllı Silme**: Silme sonrası kaydetme dialog'u otomatik açılır
+### İlk Çalıştırma
+1. Program VLC'yi otomatik bulur ve ayarlar
+2. Bulunamazsa manuel yol seçimi yapabilirsiniz
+3. VLC olmadan da HTTP kontrolü ile çalışır
 
-### 3. Playlist Editor
-1. **Playlist Yükle**: M3U8/M3U dosyasını yükle
-2. **Sıralama**: Sütun başlıklarına tıklayarak alfabetik sıralama
-3. **Düzenleme**: Çift tıklayarak kanal bilgilerini düzenle
-4. **Yönetim**: Kanal ekle/sil/taşı
-5. **Kaydet**: Gelişmiş M3U8 formatında kaydet
+## 🎯 Modüller ve Özellikler
 
-## 🔧 VLC Entegrasyonu
+### 🔍 URL Checker
+**Radyo istasyonu URL'lerini test edin ve canlı dinleyin**
+
+#### Temel Özellikler
+- **Hibrit Test Sistemi**: HTTP (hızlı) + VLC (detaylı) kombinasyonu
+- **Gömülü VLC Player**: Program içinde anında oynatma
+- **Çift Oynatma Modu**: Gömülü ve ayrı pencere seçenekleri
+- **Akıllı Filtreleme**: Çalışmayan URL'leri otomatik seçme
+- **Sıralanabilir Tablo**: Sütun başlıklarına tıklayarak sıralama
+
+#### Kullanım
+```
+1. M3U8 dosyası yükleyin
+2. "URL Kontrolü Başlat" ile test edin
+3. Çift tıklayarak canlı dinleyin
+4. Sağ tık menüsü ile gelişmiş seçenekler
+5. Çalışmayan URL'leri silin ve kaydedin
+```
+
+#### Test Sistemi
+- **1. Aşama**: HTTP kontrolü (5 saniye timeout)
+- **2. Aşama**: HTTP başarısızsa VLC testi (3 saniye)
+- **Sonuç**: ✅ Çalışıyor / ❌ Çalışmıyor
+- **İptal**: İstediğiniz zaman durdurabilirsiniz
+
+### ✏️ Playlist Editor
+**M3U8 playlist'lerini profesyonel düzeyde düzenleyin**
+
+#### Temel Özellikler
+- **Çoklu Format Desteği**: M3U8, M3U, PLS, DPL okuma/yazma
+- **Gelişmiş Metadata**: tvg-name, tvg-logo, group-title desteği
+- **Sürükle-Bırak Sıralama**: Satırları sürükleyerek yeniden sıralama
+- **Canlı Oynatma**: Çift tıklayarak anında dinleme
+- **Grup Yönetimi**: Otomatik grup listesi ve yeni grup ekleme
+
+#### Kullanım
+```
+1. Playlist dosyası yükleyin (M3U8/PLS/DPL)
+2. Tabloda istasyonu seçin
+3. Sağ panelde bilgileri düzenleyin
+4. "Değişiklikleri Uygula" ile kaydedin
+5. Çift tıklayarak test edin
+```
+
+#### Desteklenen Formatlar
+- **Okuma**: M3U8, M3U, PLS, DPL
+- **Yazma**: M3U8, M3U, PLS, DPL
+- **Metadata**: Tam EXTINF desteği
+
+### 📻 Playlist Generator
+**Çeşitli veri kaynaklarından M3U8 playlist oluşturun**
+
+#### Desteklenen Formatlar
+- **JSON**: Radyo istasyonu verileri
+- **Excel**: .xlsx, .xls (çoklu sheet desteği)
+- **CSV**: Farklı encoding'ler (UTF-8, Latin-1, CP1254)
+- **SQLite**: .db, .sqlite, .sqlite3 dosyaları
+- **XML**: Yapılandırılmış XML verileri
+
+#### Akıllı Özellikler
+- **Otomatik Ülke Tanıma**: Dosya adından ülke kodu algılama
+- **Sütun Eşleştirme**: Farklı sütun adlarını otomatik tanıma
+- **Encoding Algılama**: CSV dosyaları için otomatik encoding
+- **Sheet Seçimi**: Excel dosyalarında ülke koduna göre sheet bulma
+
+#### Kullanım
+```
+1. Veri dosyasını seçin (JSON/Excel/CSV/SQLite/XML)
+2. Ülke otomatik algılanır (veya manuel seçin)
+3. "M3U8 Oluştur" butonuna tıklayın
+4. Aynı klasöre otomatik kaydedilir
+```
+
+### 🔗 Playlist Merger
+**Birden fazla playlist'i birleştirin**
+
+#### Temel Özellikler
+- **Çoklu Dosya Seçimi**: Birden fazla M3U8 dosyası seçme
+- **Sürükle-Bırak Sıralama**: Dosya sırasını değiştirme
+- **Duplicate Kontrolü**: Tekrarlanan URL'leri filtreleme
+- **Metadata Koruma**: Tüm EXTINF bilgilerini koruma
+
+#### Kullanım
+```
+1. "Dosya Ekle" ile playlist'leri seçin
+2. Listede sürükleyerek sıralayın
+3. "Birleştir" butonuna tıklayın
+4. Birleştirilmiş dosyayı kaydedin
+```
+
+## 🎵 VLC Entegrasyonu
 
 ### Otomatik VLC Bulma
-Program VLC'yi otomatik olarak şu konumlarda arar:
-- `C:\Program Files\VideoLAN\VLC\vlc.exe`
-- `C:\Program Files (x86)\VideoLAN\VLC\vlc.exe`
-- `%LOCALAPPDATA%\Programs\VLC\vlc.exe`
-
-### Manuel VLC Ayarlama
-1. **VLC Yolu Ayarla** butonuna tıklayın
-2. `vlc.exe` dosyasını seçin
-3. Ayar otomatik olarak kaydedilir
-
-### Çalma Özellikleri
-
-#### Gömülü Oynatıcı
-- **Program İçi**: URL Checker sağ panelinde
-- **Hızlı Test**: Anında çalma, durdurma
-- **Şarkı Bilgisi**: Üst panelde çalan şarkı adı
-- **Kontrol Butonları**: ▶ ⏸ ⏹ 🔊
-- **Video Desteği**: IPTV kanalları için görüntü
-
-#### Pencere Modu
-- **Ayrı Pencere**: 400x350 boyutunda
-- **Çift Mod**: Gömülü oynatıcıdan pencereye geçiş
-- **Otomatik Geri Dönüş**: Pencere kapanınca gömülü modda devam
-- **Şarkı Bilgisi**: Pencere başlığında ve ayrı panelde
-- **Otomatik Güncelleme**: Şarkı bilgisi 3 saniyede bir güncellenir
-- **Otomatik Ortalama**: Pencere ekran ortasında açılır
-
-## 🎯 URL Test Sistemi (Hibrit Metod)
-
-### Akıllı İki Aşamalı Test
-1. **HTTP Test (1. Aşama)**: Hızlı HTTP status kontrolü (5 saniye timeout)
-2. **VLC Test (2. Aşama)**: HTTP başarısızsa VLC ile detaylı test (3 saniye)
-
-### HTTP Test (Hızlı)
-- **İlk Kontrol**: Tüm URL'ler önce HTTP ile test edilir
-- **Hızlı Sonuç**: 5 saniye timeout ile hızlı yanıt
-- **Başarılı ise**: VLC test atlanır, bir sonraki URL'ye geçilir
-- **Başarısız ise**: VLC test devreye girer
-
-### VLC Test (Detaylı)
-- **İkinci Şans**: HTTP başarısız olan URL'ler için
-- **Gerçek Test**: Stream'i gerçekten çalarak test eder
-- **Sessiz Çalışma**: Test sırasında ses çıkışı olmaz (volume=0)
-- **Kısa Süre**: 3 saniye test süresi
-
-### Test Süreci
-1. **HTTP Kontrolü**: URL HTTP 200 OK dönüyor mu? (5sn)
-2. **Başarılı ise**: ✓ Çalışıyor, sonraki URL'ye geç
-3. **Başarısız ise**: VLC ile ikinci test (3sn)
-4. **VLC Sonucu**: ✓ Çalışıyor veya ✗ Çalışmıyor
-5. **İptal Edilebilir**: İstediğiniz zaman "İptal Et" ile durdurun
-
-### Avantajları
-- **Hız**: Çalışan URL'ler için sadece 5 saniye
-- **Doğruluk**: Çalışmayan URL'ler için VLC ile ikinci kontrol
-- **Esneklik**: İstediğiniz zaman iptal edilebilir
-- **Verimlilik**: Gereksiz VLC testleri atlanır
-
-## 🎵 Şarkı Bilgisi Takibi
-
-### VLC Meta Veri Sistemi
-- **Now Playing**: Stream'den gelen anlık şarkı bilgisi
-- **Title/Artist**: VLC'nin algıladığı başlık ve sanatçı
-- **Description**: Stream açıklaması
-- **Otomatik Filtreleme**: URL'ler ve kısa metinler filtrelenir
-
-### Görüntüleme Özellikleri
-- **Pencere Başlığı**: "Oynatıcı - TRT FM | Şarkı Adı"
-- **Ayrı Panel**: Oynatma penceresinde üst kısımda şarkı bilgisi
-- **Otomatik Kısaltma**: 60 karakterden uzun metinler kısaltılır
-- **3 Saniye Güncelleme**: Şarkı bilgisi sürekli güncellenir
-
-### Desteklenen Formatlar
-- **ICY Metadata**: Internet radyo stream'lerinin standart formatı
-- **VLC Meta**: VLC'nin desteklediği tüm meta veri türleri
-- **Fallback**: Bilgi yoksa sadece istasyon adı gösterilir
-
-## 🎬 Gömülü VLC Oynatıcı Sistemi
-
-### Yeni Arayüz Düzeni
-- **Sol Panel**: Dosya seçimi ve kontrol butonları
-- **Sağ Panel**: Gömülü VLC oynatıcı (200px yükseklik)
-- **Alt Kısım**: URL listesi tablosu (daha kompakt)
+Program VLC'yi şu konumlarda otomatik arar:
+```
+C:\Program Files\VideoLAN\VLC\vlc.exe
+C:\Program Files (x86)\VideoLAN\VLC\vlc.exe
+%LOCALAPPDATA%\Programs\VLC\vlc.exe
+D:\Program Files\VideoLAN\VLC\vlc.exe
+D:\Program Files (x86)\VideoLAN\VLC\vlc.exe
+```
 
 ### Oynatma Modları
-1. **Gömülü Mod** (Varsayılan)
-   - Çift tıklama ile gömülü oynatıcıda çalar
-   - Program içinde hızlı test
-   - Video içerik için görüntü desteği
-   
-2. **Pencere Modu**
-   - Sağ tık → "Pencere Modunda Çal"
-   - 🔊 butonu ile geçiş
-   - Daha büyük görüntü alanı
 
-### Akıllı Geçiş Sistemi
-- **Gömülü → Pencere**: 🔊 butonu veya çift tıklama
-- **Pencere → Gömülü**: Pencere kapatma ile otomatik geri dönüş
-- **Stream Sürekliliği**: Mod değişiminde stream devam eder
-- **Şarkı Takibi**: Her iki modda da çalan şarkı gösterilir
+#### 🖥️ Gömülü Oynatıcı
+- **Program İçi**: URL Checker'da sağ panelde
+- **Anında Test**: Çift tıklayarak hızlı oynatma
+- **Video Desteği**: IPTV kanalları için görüntü
+- **Kontrol Butonları**: ▶️ ⏸️ ⏹️ 🔊
 
-### Kontrol Özellikleri
-- **▶ Oynat**: Stream'i başlat/devam ettir
-- **⏸ Duraklat**: Geçici durdurma
-- **⏹ Durdur**: Tamamen durdur
-- **🔊 Pencere**: Pencere moduna geç
-- **Sağ Tık**: Gelişmiş seçenekler menüsü
+#### 🪟 Ayrı Pencere Modu
+- **Büyük Ekran**: 640x480 boyutunda ayrı pencere
+- **Tam Ekran**: F11 veya çift tık ile tam ekran
+- **Klavye Kısayolları**: Space (oynat/duraklat), Esc (tam ekrandan çık)
+- **Otomatik Ortalama**: Pencere ekran ortasında açılır
 
-### IPTV Desteği
-- **Video Stream'ler**: Gömülü oynatıcıda görüntü
-- **Radyo Stream'ler**: Sadece ses, siyah ekran
-- **Otomatik Algılama**: VLC stream türünü otomatik belirler
-- **Esnek Boyutlandırma**: Video boyutuna göre ayarlanır
+### Şarkı Metaverisi Takibi
+- **Pencere Başlığı**: "Tab Adı - Çalıyor: İstasyon (Şarkı - Sanatçı)"
+- **Otomatik Güncelleme**: 3 saniyede bir metadata kontrolü
+- **Akıllı Filtreleme**: URL'ler ve gereksiz bilgiler filtrelenir
+- **Fallback**: Metadata yoksa sadece istasyon adı gösterilir
+
+## 🎨 Arayüz Özellikleri
+
+### Dinamik Pencere Başlığı
+```
+Oynatma Yok:     "URL Checker"
+Sadece İstasyon: "URL Checker - Çalıyor: Radyo Mega FM"
+Şarkı ile:       "URL Checker - Çalıyor: Radyo Mega FM (Sezen Aksu - Gülümse)"
+```
+
+### Modern Tasarım
+- **Tab-based Arayüz**: 4 ana modül ayrı tab'larda
+- **Zebra Stripes**: Tablolarda alternatif satır renkleri
+- **Sıralanabilir Sütunlar**: Başlıklara tıklayarak alfabetik sıralama
+- **Progress Bar**: Alt kısımda birleşik ilerleme/durum çubuğu
+- **Responsive**: Pencere boyutlandırılabilir
+
+### Kullanıcı Deneyimi
+- **Otomatik Ortalama**: Tüm pencereler ekran ortasında açılır
+- **Akıllı Butonlar**: Duruma göre enable/disable
+- **Sağ Tık Menüleri**: Gelişmiş seçenekler
+- **Drag & Drop**: Sürükle-bırak desteği
+
+## 🗄️ Veri Yönetimi
+
+### SQLite Veritabanı
+Ayarlar `veriler.db` SQLite veritabanında saklanır:
+- **VLC Yolu**: Otomatik bulma ve manuel ayarlama
+- **Son Klasörler**: Dosya dialog'ları için son kullanılan konumlar
+- **Playlist Grupları**: Kullanıcı tanımlı grup listesi
+- **Timestamp**: Ayar değişiklik geçmişi
+
+### Otomatik INI Geçişi
+- Mevcut `radio_settings.ini` otomatik olarak SQLite'a aktarılır
+- Orijinal dosya `.backup` uzantısı ile korunur
+- Geriye dönük uyumluluk sağlanır
 
 ## 📁 Dosya Formatları
 
-### Desteklenen Giriş Formatları
-- **JSON**: Radyo istasyonu verileri
-- **Excel (xlsx/xls)**: Çalışma sayfaları ile organize veriler
-- **CSV**: Virgülle ayrılmış değerler (farklı encoding desteği)
-- **SQLite**: Veritabanı dosyaları (.db, .sqlite, .sqlite3)
-- **XML**: Yapılandırılmış XML verileri
-- **M3U8/M3U**: Mevcut playlist'ler
+### Giriş Formatları
+| Format | Uzantı | Açıklama |
+|--------|--------|----------|
+| JSON | .json | Radyo istasyonu verileri |
+| Excel | .xlsx, .xls | Çoklu sheet desteği |
+| CSV | .csv | Farklı encoding desteği |
+| SQLite | .db, .sqlite | Veritabanı dosyaları |
+| XML | .xml | Yapılandırılmış veriler |
+| M3U8 | .m3u8, .m3u | Mevcut playlist'ler |
+| PLS | .pls | Winamp playlist formatı |
+| DPL | .dpl | Daum playlist formatı |
 
 ### Çıktı Formatları
-- **Basit M3U8**: Temel playlist
-- **Gelişmiş M3U8**: tvg parametreleri ile
-
-### Örnek Gelişmiş M3U8
 ```m3u8
 #EXTM3U
 #EXTINF:-1 tvg-name="TRT1" tvg-logo="logo.png" group-title="Ulusal",TRT 1
 http://stream-url.com/trt1
+#EXTINF:-1 tvg-name="TRT2" tvg-logo="logo2.png" group-title="Ulusal",TRT 2
+http://stream-url.com/trt2
 ```
 
-## ⚙️ Ayarlar
+## ⚙️ Yapılandırma
 
-### SQLite Veritabanı (Yeni!)
-Ayarlar artık `veriler.db` SQLite veritabanında saklanır:
-- **VLC Yolu**: Otomatik bulma ve manuel ayarlama
-- **Kullanıcı Tercihleri**: Gelişmiş ayar yönetimi
-- **Geçmiş Saklama**: Timestamp'li ayar geçmişi
-- **Otomatik Geçiş**: Mevcut .ini dosyası otomatik olarak SQLite'a aktarılır
+### Sistem Gereksinimleri
+- **İşletim Sistemi**: Windows 7/8/10/11
+- **Python**: 3.7 veya üzeri
+- **RAM**: Minimum 512 MB
+- **Disk**: 100 MB boş alan
+- **VLC**: Opsiyonel (oynatma için)
 
-### Eski INI Desteği
-- Mevcut `radio_settings.ini` dosyası otomatik olarak `veriler.db`'ye aktarılır
-- Orijinal dosya `.backup` uzantısı ile yedeklenir
-- Geriye dönük uyumluluk korunur
+### Bağımlılıklar
+```txt
+python-vlc>=3.0.0    # VLC entegrasyonu
+pandas>=1.3.0        # Excel/CSV işleme
+openpyxl>=3.0.0      # Excel okuma/yazma
+xlrd>=2.0.0          # Eski Excel desteği
+lxml>=4.6.0          # XML işleme
+```
 
-## 🎨 Arayüz Özellikleri
+## 🔧 Sorun Giderme
 
-- **Birleşik Progress/Status Bar**: Alt kısımda hem ilerleme hem durum bilgisi
-- **Ortalanmış Pencereler**: Ana program ve dialog'lar ekran ortasında açılır
-- **Responsive Tasarım**: Yeniden boyutlandırılabilir
-- **Sıralanabilir Tablolar**: Sütun başlıklarına tıklayarak alfabetik sıralama
-- **Şarkı Bilgisi Takibi**: VLC oynatma penceresinde çalan şarkı adı
-- **Tablo Görünümü**: Kolay veri yönetimi
-- **Akıllı Butonlar**: Duruma göre enable/disable
-- **Otomatik İşlemler**: Kullanıcı deneyimini kolaylaştıran otomasyonlar
+### Yaygın Sorunlar
 
-## 🔍 Sorun Giderme
+#### VLC Bulunamıyor
+```
+Çözüm 1: VLC Media Player'ı yükleyin
+Çözüm 2: Program başlangıcında manuel yol seçin
+Çözüm 3: HTTP test modu ile devam edin
+```
 
-### VLC Bulunamıyor
-1. VLC Media Player'ı yükleyin
-2. "VLC Yolu Ayarla" ile manuel olarak ayarlayın
+#### Python-VLC Hatası
+```bash
+# Windows
+pip install python-vlc
 
-### Python-VLC Hatası
-1. `install_requirements.bat` çalıştırın
-2. Manuel: `pip install python-vlc`
-3. VLC yoksa HTTP test modu otomatik devreye girer
+# Hata devam ederse
+pip uninstall python-vlc
+pip install python-vlc --no-cache-dir
+```
 
-### URL Kontrol Yavaş
-- VLC test modu daha yavaş ama daha doğru
-- HTTP test modu daha hızlı ama daha az güvenilir
-- Timeout süresi 15 saniye (VLC) / 10 saniye (HTTP)
+#### Pandas/Excel Hatası
+```bash
+# Tüm bağımlılıkları yeniden yükle
+pip install -r requirements.txt --upgrade
+```
 
-### Yanlış Sonuçlar
-- **HTTP Test**: Çalışmayan radyolar "çalışıyor" gösterebilir
-- **VLC Test**: Gerçek ses çıkışı kontrolü yapar
-- **Çözüm**: python-vlc kütüphanesini yükleyin
+#### Encoding Sorunları
+- CSV dosyaları için UTF-8 encoding kullanın
+- Excel dosyaları otomatik algılanır
+- Türkçe karakterler için CP1254 denenebilir
 
-### Pandas/Excel Hatası
-1. `install_requirements.bat` çalıştırın
-2. Manuel: `pip install pandas openpyxl xlrd`
+### Performans İpuçları
+- **URL Kontrolü**: VLC test daha doğru ama yavaş
+- **Büyük Dosyalar**: Excel yerine CSV kullanın
+- **Bellek**: Çok büyük playlist'ler için parça parça işleyin
 
-## 📝 Lisans
+## 📊 Sürüm Geçmişi
 
-Bu proje açık kaynak kodludur ve eğitim amaçlı kullanım için tasarlanmıştır.
+### v2.1.0 (Güncel)
+- ✨ Dinamik pencere başlığı ve şarkı metaverisi
+- 🎵 Gömülü oynatıcıdan şarkı bilgisi paneli kaldırıldı
+- 🔧 Tab sıralaması güncellendi (URL Checker ilk sırada)
+- 🎨 Playlist Editor layout iyileştirmeleri
+
+### v2.0.0
+- 🆕 Modüler yapıya geçiş (6 ayrı modül)
+- 🗄️ SQLite veritabanı entegrasyonu
+- 🎵 Gelişmiş VLC player ve şarkı takibi
+- 🎨 Modern arayüz ve zebra stripes
+
+### v1.x
+- 📻 Temel playlist oluşturma
+- 🔍 HTTP URL kontrolü
+- ✏️ Basit M3U8 düzenleme
 
 ## 🤝 Katkıda Bulunma
 
-Hata raporları ve öneriler için issue açabilirsiniz.
+### Geliştirme Ortamı
+```bash
+# Projeyi fork edin ve klonlayın
+git clone https://github.com/yourusername/playlist-editor-pro.git
+cd playlist-editor-pro
+
+# Geliştirme branch'i oluşturun
+git checkout -b feature/yeni-ozellik
+
+# Değişikliklerinizi yapın ve test edin
+python main.py
+
+# Commit ve push
+git commit -m "Yeni özellik: açıklama"
+git push origin feature/yeni-ozellik
+
+# Pull request oluşturun
+```
+
+### Kod Standartları
+- **PEP 8**: Python kod standartları
+- **Modüler Tasarım**: Her özellik ayrı modülde
+- **Hata Yönetimi**: Try-except blokları kullanın
+- **Dokümantasyon**: Fonksiyonları dokümante edin
+
+### Hata Bildirimi
+[Issues](https://github.com/username/playlist-editor-pro/issues) sayfasından hata bildirebilirsiniz:
+- 🐛 **Bug Report**: Hata açıklaması ve adımlar
+- 💡 **Feature Request**: Yeni özellik önerileri
+- 📖 **Documentation**: Dokümantasyon iyileştirmeleri
+
+## 📄 Lisans
+
+Bu proje [MIT Lisansı](LICENSE) altında yayınlanmıştır.
+
+```
+MIT License
+
+Copyright (c) 2024 Playlist Editor PRO
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+```
+
+## 🙏 Teşekkürler
+
+- **VLC Media Player**: Güçlü multimedia framework
+- **Python Community**: Harika kütüphaneler
+- **Kullanıcılar**: Değerli geri bildirimler
+- **Katkıda Bulunanlar**: Açık kaynak ruhu
+
+## 📞 İletişim
+
+- **GitHub**: [Issues](https://github.com/username/playlist-editor-pro/issues)
+- **Email**: developer@example.com
+- **Website**: https://playlist-editor-pro.com
+
+---
+
+<div align="center">
+
+**⭐ Projeyi beğendiyseniz yıldız vermeyi unutmayın! ⭐**
+
+Made with ❤️ by [Developer Name](https://github.com/username)
+
+</div>
