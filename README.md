@@ -29,6 +29,9 @@
 ### Playlist Generator - Çoklu Format Desteği
 <img width="1247" height="933" alt="playlist generator" src="https://github.com/user-attachments/assets/dafe7459-29f1-4c6b-9674-4cd4ff5989ed" />
 
+### Playlist Merger - Çok Sayıda Playlist Dosyasını Tek Dosyada Birleştirin
+<img width="1248" height="932" alt="playlist merger" src="https://github.com/user-attachments/assets/6e01f553-654d-4f24-95f2-05878af4de40" />
+
 
 ## 🚀 Hızlı Başlangıç
 
