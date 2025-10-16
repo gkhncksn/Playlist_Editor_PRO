@@ -20,6 +20,7 @@
 
 ### URL Checker - Canlı Test ve Oynatma
 <img width="1252" height="936" alt="url checker" src="https://github.com/user-attachments/assets/923f0115-292d-488f-b512-704955b46dc0" />
+<img width="1247" height="933" alt="playlist generator" src="https://github.com/user-attachments/assets/43203c26-8e23-4093-83d3-5e9b79ff8fb0" />
 
 ### Playlist Editor - Gelişmiş Düzenleme
 <img width="1252" height="931" alt="playlist editor" src="https://github.com/user-attachments/assets/9e34db3c-7394-4b7e-a862-5fb25ac705ca" />
