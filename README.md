@@ -391,6 +391,6 @@ copies or substantial portions of the Software.
 
 **⭐ Projeyi beğendiyseniz yıldız vermeyi unutmayın! ⭐**
 
-Made with ❤️ by [Developer Name](https://github.com/gkhncksn)
+Made with ❤️ by [gkhncksn](https://github.com/gkhncksn)
 
 </div>
